@@ -1,10 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-// const DB = require('../config/db');
-// autoIncrement = require('mongoose-auto-increment');
-
-// var connection = mongoose.createConnection(DB);
-// autoIncrement.initialize(connection);
 
 const rentingSchema = new Schema({
   rentNumber: {
@@ -44,5 +39,4 @@ const rentingSchema = new Schema({
 );
 
 const Renting = mongoose.model('Renting', rentingSchema);
-// rentingSchema.plugin(autoIncrement.plugin, { model: 'Renting', field: 'rentNumber' });
 module.exports = Renting;

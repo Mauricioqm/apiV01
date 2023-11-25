@@ -38,8 +38,10 @@ exports.getCars = async (req, res, next) => {
 
 exports.updateCar = async(req, res, next) => {
     const { platenumber, brand, state, dailyvalue } = req.body;
+    const oldPltenumber = req.params.placa;
     try {
-      const car = await Car.findOneAndUpdate({platenumber}, {platenumber, brand, state, dailyvalue} , { new: true });
+      const car = await Car.findOneAndUpdate({'platenumber': oldPltenumber}, {platenumber, brand, state, dailyvalue} , { new: true });
+      console.log(car);
       res.send(car);
     } catch (error) {
       console.error(error);
@@ -48,10 +50,11 @@ exports.updateCar = async(req, res, next) => {
 };
 
 exports.deleteCar = async(req, res, next) => {
-  const placa = req.body.params;
+  const placa = req.params;
+  deletePlaca = placa.placa
 
   try {
-    const car = await Car.findOneAndDelete(placa);
+    const car = await Car.findOneAndDelete(deletePlaca);
     res.send(car);
   } catch (error) {
     console.error(error);

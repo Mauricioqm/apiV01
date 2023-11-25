@@ -5,7 +5,7 @@ exports.createUser = (req, res, next) => {
     username: req.body.username,
     name: req.body.email,
     password: req.body.password,
-    role: req.body.password,
+    role: req.body.role,
     reservword: req.body.password,
   }
   // console.log(newUser);
@@ -36,7 +36,7 @@ exports.loginUser = (req, res, next) => {
   .then(resp => {
       if (!resp) {
         // documento no existe
-        resp.status(409).send({ message: 'Algo esta mal, por favor verifica tus datos' });
+        res.status(409).send({ message: 'Algo esta mal, por favor verifica tus datos' });
       }  else {
         if(userData.password === resp.password) {
           console.log(' => ', resp);

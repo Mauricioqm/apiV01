@@ -1,12 +1,13 @@
 const User = require('./authModel')
 
 exports.createUser = (req, res, next) => {
+  console.log(req.body);
   const newUser = {
     username: req.body.username,
-    name: req.body.email,
+    email: req.body.email,
     password: req.body.password,
     role: req.body.role,
-    reservword: req.body.password,
+    reservword: req.body.reservword,
   }
   // console.log(newUser);
 
